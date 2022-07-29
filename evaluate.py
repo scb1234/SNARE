@@ -8,8 +8,6 @@ import keras.backend as K
 import numpy as np
 from sklearn.utils import shuffle
 from tensorflow import set_random_seed
-from trap_utils import test_neuron_cosine_sim, init_gpu, preprocess, CoreModel, build_bottleneck_model, load_dataset, \
-    get_other_label_data, cal_roc, injection_func, generate_attack
 
 K.set_learning_phase(0)
 
@@ -110,7 +108,7 @@ def eval_defense():
 
     sess = init_gpu(args.gpu)
     if args.attack == 'all':
-        ATTACK = ["cw", "en", 'pgd']
+        ATTACK = ["cw", "BIM", 'pgd','BPDA']
     else:
         ATTACK = [args.attack]
 
